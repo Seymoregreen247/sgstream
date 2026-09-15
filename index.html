@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TV Unleashed — Live TV, Movies, Sports & More</title>
+<meta name="description" content="TV Unleashed offers simple annual streaming plans for live TV, premium channels, movies, series, sports and pay-per-view. Customer supplies a compatible device.">
+<meta name="theme-color" content="#050805">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="TV Unleashed">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:#080808;color:#fff;font-family:'DM Sans',sans-serif;overflow-x:hidden;}
+.df{font-family:'Bebas Neue',sans-serif;letter-spacing:.03em;}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(8,8,8,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.nav-logo{font-family:'Bebas Neue',sans-serif;letter-spacing:.03em;font-size:26px;color:#fff;text-decoration:none;}
+.nav-logo span{color:#4BBB2A;}
+.nav-logo{display:flex;align-items:center;gap:10px;}
+.nav-logo img{width:42px;height:42px;border-radius:9px;object-fit:cover;box-shadow:0 0 18px rgba(75,187,42,.28);}
+.nav-links{display:flex;gap:28px;align-items:center;}
+.nav-link{background:none;border:none;color:rgba(255,255,255,.45);font:500 13px 'DM Sans',sans-serif;cursor:pointer;transition:color .2s;text-decoration:none;}
+.nav-link:hover{color:#fff;}
+.btn-green{background:#4BBB2A;color:#000;border:none;border-radius:8px;font:700 13px 'DM Sans',sans-serif;padding:9px 20px;cursor:pointer;transition:all .2s;text-decoration:none;display:inline-block;}
+.btn-green:hover{filter:brightness(1.1);transform:translateY(-1px);}
+
+/* HERO */
+.hero{background:radial-gradient(ellipse 140% 80% at 50% -10%,rgba(75,187,42,.22) 0%,transparent 55%),radial-gradient(ellipse 80% 60% at 95% 40%,rgba(0,212,255,.1) 0%,transparent 50%),#080808;padding:80px 24px 64px;text-align:center;}
+.hero-inner{max-width:860px;margin:0 auto;}
+.live-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(75,187,42,.09);border:1px solid rgba(75,187,42,.28);border-radius:100px;padding:6px 18px;margin-bottom:28px;font-size:13px;color:#4BBB2A;font-weight:600;}
+.ldot{width:7px;height:7px;border-radius:50%;background:#ff3d71;display:inline-block;animation:ping 2s infinite;flex-shrink:0;}
+@keyframes ping{0%,100%{box-shadow:0 0 0 0 rgba(255,61,113,.5);}50%{box-shadow:0 0 0 10px rgba(255,61,113,0);}}
+.hero h1{font-family:'Bebas Neue',sans-serif;letter-spacing:.03em;font-size:88px;line-height:.9;margin-bottom:28px;color:#fff;}
+.shimmer{background:linear-gradient(90deg,#4BBB2A,#00d4ff,#4BBB2A);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:sh 3s linear infinite;}
+@keyframes sh{to{background-position:200% center;}}
+.hero p{font-size:18px;color:rgba(255,255,255,.42);line-height:1.7;margin-bottom:36px;max-width:580px;margin-left:auto;margin-right:auto;}
+.hero p strong{color:#4BBB2A;}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:40px;}
+.btn-main{background:#4BBB2A;color:#000;border:none;border-radius:10px;font:800 17px 'DM Sans',sans-serif;padding:16px 40px;cursor:pointer;transition:all .2s;}
+.btn-main:hover{filter:brightness(1.1);transform:translateY(-2px);}
+.btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:10px;font:500 16px 'DM Sans',sans-serif;padding:15px 28px;cursor:pointer;transition:all .2s;}
+.btn-ghost:hover{background:rgba(255,255,255,.07);}
+.trust-row{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;}
+.trust-item{color:rgba(255,255,255,.28);font-size:13px;display:flex;align-items:center;gap:6px;}
+
+/* STATS */
+.stats-bar{border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.015);padding:22px 24px;}
+.stats-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.stat-box{text-align:center;padding:18px;background:rgba(255,255,255,.025);border-radius:12px;border:1px solid rgba(255,255,255,.05);}
+.stat-box .icon{font-size:24px;margin-bottom:6px;}
+.stat-box .num{font-family:'Bebas Neue',sans-serif;letter-spacing:.03em;font-size:30px;color:#4BBB2A;}
+.stat-box .lbl{font-size:12px;color:rgba(255,255,255,.3);margin-top:3px;}
+
+/* CONTENT */
+.content-section{padding:64px 24px;}
+.content-inner{max-width:1200px;margin:0 auto;}
+.section-header{margin-bottom:28px;}
+.section-header h2{font-family:'Bebas Neue',sans-serif;letter-spacing:.03em;font-size:50px;margin-bottom:8px;}
+.section-header p{color:rgba(255,255,255,.32);font-size:15px;}
+.tabs{display:flex;gap:8px;margin-bottom:22px;overflow-x:auto;padding-bottom:6px;}
+.tabs::-webkit-scrollbar{height:2px;}
+.tabs::-webkit-scrollbar-thumb{background:#4BBB2A;border-radius:2px;}
+.tab{padding:9px 18px;border-radius:100px;border:1px solid rgba(255,255,255,.12);background:transparent;color:rgba(255,255,255,.45);cursor:pointer;font:500 13px 'DM Sans',sans-serif;white-space:nowrap;transition:all .2s;}
+.tab:hover{color:#fff;border-color:rgba(255,255,255,.3);}
+.tab.active{color:#fff;border-color:transparent;}
+#loading{text-align:center;padding:60px;color:rgba(255,255,255,.3);font-size:15px;}
+.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;}
+.card{position:relative;border-radius:10px;overflow:hidden;cursor:pointer;transition:transform .3s ease;aspect-ratio:2/3;background:#111;}
+.card:hover{transform:scale(1.05);z-index:5;}
+.card:hover .play-ov{opacity:1;}
+.card img.poster{width:100%;height:100%;object-fit:cover;display:block;}
+.play-ov{position:absolute;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .25s;}
+.play-btn{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
+.card-badge{position:absolute;top:10px;right:8px;background:rgba(0,0,0,.78);border-radius:5px;padding:3px 7px;font-size:9px;color:rgba(255,255,255,.8);font-weight:700;text-transform:uppercase;letter-spacing:.5px;}
+.card-foot{position:absolute;bottom:0;left:0;right:0;padding:20px 10px 12px;background:linear-gradient(transparent,rgba(0,0,0,.95));}
+.card-sub{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.9px;margin-bottom:3px;}
+.card-title{font-size:12px;font-weight:600;color:#fff;line-height:1.25;}
+.grid-note{text-align:center;margin-top:16px;font-size:12px;color:rgba(255,255,255,.2);}
+
+/* PACKAGES */
+.packages{background:rgba(255,255,255,.01);border-top:1px solid rgba(255,255,255,.05);padding:64px 24px;}
+.packages-inner{max-width:1200px;margin:0 auto;}
+.pkg-header{text-align:center;margin-bottom:44px;}
+.pkg-header h2{font-family:'Bebas Neue',sans-serif;letter-spacing:.03em;font-size:52px;margin-bottom:10px;}
+.pkg-header p{color:rgba(255,255,255,.35);font-size:16px;}
+.pkg-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.pkg-card{border-radius:18px;padding:26px;cursor:pointer;position:relative;overflow:visible;transition:transform .3s,box-shadow .3s;}
+.pkg-card:hover{transform:translateY(-8px);box-shadow:0 28px 64px rgba(0,0,0,.55);}
+.pkg-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:800;padding:4px 16px;border-radius:100px;letter-spacing:1.2px;white-space:nowrap;color:#000;}
+.pkg-name{font-family:'Bebas Neue',sans-serif;letter-spacing:.03em;font-size:26px;margin-bottom:4px;}
+.pkg-tag{font-size:12px;color:rgba(255,255,255,.32);margin-bottom:18px;}
+.pkg-price{margin-bottom:18px;}
+.pkg-price .dollars{font-family:'Bebas Neue',sans-serif;letter-spacing:.03em;font-size:48px;color:#fff;}
+.pkg-price .cents{font-size:13px;color:rgba(255,255,255,.35);}
+.pkg-feats{margin-bottom:20px;}
+.pkg-row{display:flex;align-items:center;gap:9px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05);}
+.pkg-row:last-child{border-bottom:none;}
+.pkg-row span{font-size:12.5px;color:rgba(255,255,255,.8);}
+.pkg-row.locked span{color:rgba(255,255,255,.22);text-decoration:line-through;}
+.pkg-btn{width:100%;border-radius:9px;font:700 13px 'DM Sans',sans-serif;padding:13px;cursor:pointer;transition:all .2s;}
+.device-note{max-width:1200px;margin:22px auto 0;text-align:center;}
+.device-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:10px 24px;font-size:13px;color:rgba(255,255,255,.5);}
+.device-pill strong{color:#fff;}
+
+/* PROVIDER PRICE GUIDE */
+.price-guide{padding:64px 24px;border-top:1px solid rgba(255,255,255,.06);background:radial-gradient(ellipse at 50% 0,rgba(0,212,255,.08),transparent 55%),#090909;}
+.price-inner{max-width:1200px;margin:0 auto;}
+.price-top{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:26px;}
+.verified{font-size:12px;color:rgba(255,255,255,.42);background:rgba(75,187,42,.08);border:1px solid rgba(75,187,42,.2);border-radius:100px;padding:8px 14px;white-space:nowrap;}
+.provider-tabs{display:flex;gap:9px;overflow-x:auto;padding-bottom:8px;margin-bottom:24px;}
+.provider-tab{border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.025);color:rgba(255,255,255,.55);border-radius:10px;padding:11px 18px;font:700 13px 'DM Sans',sans-serif;cursor:pointer;white-space:nowrap;}
+.provider-tab.active{background:#4BBB2A;border-color:#4BBB2A;color:#071006;}
+.price-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.price-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:15px;padding:22px;display:flex;flex-direction:column;min-height:250px;}
+.price-provider{font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:#4BBB2A;font-weight:800;margin-bottom:8px;}
+.price-name{font-family:'Bebas Neue',sans-serif;font-size:27px;line-height:1;margin-bottom:10px;}
+.price-amount{font-family:'Bebas Neue',sans-serif;font-size:38px;color:#fff;margin-bottom:4px;}
+.price-period{font-family:'DM Sans',sans-serif;font-size:12px;color:rgba(255,255,255,.35);}
+.price-detail{font-size:12.5px;line-height:1.55;color:rgba(255,255,255,.55);margin:12px 0 18px;flex:1;}
+.official-link{display:inline-flex;justify-content:center;text-decoration:none;border:1px solid rgba(75,187,42,.45);color:#77df57;border-radius:8px;padding:10px 12px;font-size:12px;font-weight:700;}
+.guide-note{margin-top:20px;color:rgba(255,255,255,.32);font-size:12px;line-height:1.6;}
+
+/* DEVICES */
+.devices{padding:56px 24px;border-top:1px solid rgba(255,255,255,.05);text-align:center;}
+.devices-inner{max-width:900px;margin:0 auto;}
+.devices h2{font-family:'Bebas Neue',sans-serif;letter-spacing:.03em;font-size:44px;margin-bottom:10px;}
+.devices p{color:rgba(255,255,255,.32);font-size:15px;margin-bottom:36px;}
+.devices-row{display:flex;justify-content:center;gap:44px;flex-wrap:wrap;}
+.device-item{text-align:center;}
+.device-item .d-icon{font-size:38px;margin-bottom:8px;}
+.device-item .d-label{font-size:12px;color:rgba(255,255,255,.35);font-weight:500;}
+
+/* ORDER FORM */
+.form-section{padding:64px 24px;background:rgba(255,255,255,.01);border-top:1px solid rgba(255,255,255,.05);}
+.form-box{max-width:560px;margin:0 auto;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:40px;}
+.form-box h2{font-family:'Bebas Neue',sans-serif;letter-spacing:.03em;font-size:42px;margin-bottom:8px;}
+.form-box .form-sub{color:rgba(255,255,255,.32);font-size:15px;margin-bottom:28px;}
+.form-fields{display:flex;flex-direction:column;gap:16px;}
+.field-label{display:block;font-size:10px;color:rgba(255,255,255,.32);margin-bottom:6px;font-weight:700;text-transform:uppercase;letter-spacing:1.1px;}
+.inp{width:100%;padding:13px 16px;border-radius:9px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:#fff;font:400 15px 'DM Sans',sans-serif;outline:none;transition:border-color .2s;}
+.inp:focus{border-color:#4BBB2A;}
+.inp::placeholder{color:rgba(255,255,255,.22);}
+select.inp{appearance:none;cursor:pointer;background:#0f0f0f;}
+.form-summary{background:rgba(75,187,42,.06);border:1px solid rgba(75,187,42,.18);border-radius:12px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;}
+.form-summary .s-left .s-lbl{font-size:11px;color:rgba(255,255,255,.35);}
+.form-summary .s-left .s-name{font-family:'Bebas Neue',sans-serif;letter-spacing:.03em;font-size:24px;color:#fff;}
+.form-summary .s-left .s-tag{font-size:11px;color:rgba(255,255,255,.3);}
+.form-summary .s-right .s-price{font-family:'Bebas Neue',sans-serif;letter-spacing:.03em;font-size:34px;color:#4BBB2A;}
+.form-summary .s-right .s-mo{font-size:12px;color:rgba(255,255,255,.32);}
+.btn-submit{width:100%;background:#4BBB2A;color:#000;border:none;border-radius:10px;font:800 18px 'DM Sans',sans-serif;padding:18px;cursor:pointer;transition:all .2s;margin-top:4px;}
+.btn-submit:hover{filter:brightness(1.08);transform:translateY(-1px);}
+.form-fine{text-align:center;font-size:12px;color:rgba(255,255,255,.18);}
+.success-box{text-align:center;padding:48px 20px;}
+.success-box .s-check{font-size:64px;margin-bottom:18px;}
+.success-box h2{font-family:'Bebas Neue',sans-serif;letter-spacing:.03em;font-size:48px;color:#4BBB2A;margin-bottom:12px;}
+.success-box p{color:rgba(255,255,255,.5);font-size:16px;margin-bottom:16px;line-height:1.6;}
+.success-box .s-note{font-size:13px;color:rgba(255,255,255,.22);}
+
+/* FOOTER */
+footer{padding:32px 24px;border-top:1px solid rgba(255,255,255,.06);background:#050505;}
+.foot-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+.foot-logo{font-family:'Bebas Neue',sans-serif;letter-spacing:.03em;font-size:22px;color:#fff;}
+.foot-logo span{color:#4BBB2A;}
+.foot-tagline{font-size:12px;color:rgba(255,255,255,.22);margin-top:4px;}
+.foot-links{display:flex;gap:28px;}
+.foot-link{font-size:13px;color:rgba(255,255,255,.25);cursor:pointer;text-decoration:none;transition:color .2s;}
+.foot-link:hover{color:rgba(255,255,255,.6);}
+.foot-copy{font-size:12px;color:rgba(255,255,255,.15);}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .hero h1{font-size:68px;}
+  .grid{grid-template-columns:repeat(4,1fr);}
+  .pkg-grid{grid-template-columns:repeat(2,1fr);}
+  .price-cards{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:768px){
+  .hero h1{font-size:52px;}
+  .nav-links .nav-link{display:none;}
+  .stats-grid{grid-template-columns:repeat(2,1fr);}
+  .grid{grid-template-columns:repeat(3,1fr);}
+  .pkg-grid{grid-template-columns:repeat(2,1fr);}
+  .devices-row{gap:28px;}
+  .foot-inner{flex-direction:column;text-align:center;}
+  .foot-links{flex-wrap:wrap;justify-content:center;}
+}
+@media(max-width:480px){
+  .hero h1{font-size:42px;}
+  .grid{grid-template-columns:repeat(2,1fr);}
+  .pkg-grid{grid-template-columns:1fr;}
+  .price-cards{grid-template-columns:1fr;}
+  .price-top{align-items:flex-start;flex-direction:column;}
+  .hero-btns{flex-direction:column;align-items:center;}
+  .form-box{padding:28px 20px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo"><img src="icon-192.png" alt="TV Unleashed icon"><span>TV</span>&nbsp;UNLEASHED</a>
+    <div class="nav-links">
+      <a href="#packages" class="nav-link">Packages</a>
+      <a href="#price-guide" class="nav-link">Price Guide</a>
+      <a href="#content" class="nav-link">Movies</a>
+      <a href="#content" class="nav-link">Live TV</a>
+      <a href="#content" class="nav-link">PPV</a>
+      <a href="#order" class="btn-green">Get Access</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div class="live-badge">
+      <span class="ldot"></span>&nbsp;50,000+ Titles &middot; Streaming Now
+    </div>
+    <h1>TV WITHOUT LIMITS.<br><span class="shimmer">UNLEASH YOUR VIEW.</span></h1>
+    <p>Live TV. Premium channels. Movies. Series. Sports and Pay-Per-View.<br>Annual plans start at just <strong>$100/year</strong>.</p>
+    <div class="hero-btns">
+      <button class="btn-main" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">🚀 Start Streaming Today</button>
+      <button class="btn-ghost" onclick="document.getElementById('content').scrollIntoView({behavior:'smooth'})">▶ See What's Included</button>
+    </div>
+    <div class="trust-row">
+      <div class="trust-item"><span>⚡</span><span>No Buffering</span></div>
+      <div class="trust-item"><span>🌍</span><span>Works Worldwide</span></div>
+      <div class="trust-item"><span>📱</span><span>Any Device</span></div>
+      <div class="trust-item"><span>🔒</span><span>100% Secure</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-grid">
+    <div class="stat-box"><div class="icon">🎬</div><div class="num">50K+</div><div class="lbl">Movies &amp; Series</div></div>
+    <div class="stat-box"><div class="icon">📡</div><div class="num">2,500+</div><div class="lbl">Live Channels</div></div>
+    <div class="stat-box"><div class="icon">🖥️</div><div class="num">4K</div><div class="lbl">Ultra HD</div></div>
+    <div class="stat-box"><div class="icon">⚡</div><div class="num">99.9%</div><div class="lbl">Uptime</div></div>
+  </div>
+</div>
+
+<!-- CONTENT LIBRARY -->
+<section class="content-section" id="content">
+  <div class="content-inner">
+    <div class="section-header">
+      <h2>WHAT'S IN YOUR LIBRARY</h2>
+      <p>Browse every category. Tap a tab to switch.</p>
+    </div>
+    <div class="tabs" id="tabs"></div>
+    <div id="loading">Loading posters...</div>
+    <div class="grid" id="grid" style="display:none"></div>
+    <p class="grid-note" id="grid-note"></p>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section class="packages" id="packages">
+  <div class="packages-inner">
+    <div class="pkg-header">
+      <h2>PICK YOUR PACKAGE</h2>
+      <p>One payment covers a full year. Choose Basic, Better, or Best.</p>
+    </div>
+    <div class="pkg-grid" id="pkg-grid"></div>
+    <div class="device-note">
+      <div class="device-pill">
+        📺&nbsp;<span><strong>Device is not included.</strong>&nbsp;Customers must purchase and use their own compatible streaming device.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CURRENT PROVIDER PRICE GUIDE -->
+<section class="price-guide" id="price-guide">
+  <div class="price-inner">
+    <div class="price-top">
+      <div class="section-header" style="margin-bottom:0">
+        <h2>WHAT TV REALLY COSTS</h2>
+        <p>Compare current official prices before choosing how you watch.</p>
+      </div>
+      <div class="verified">✓ Prices verified September 15, 2026</div>
+    </div>
+    <div class="provider-tabs" id="provider-tabs"></div>
+    <div class="price-cards" id="price-cards"></div>
+    <p class="guide-note">Prices are U.S. consumer rates checked on official provider pages. Promotions, taxes, regional sports fees, internet requirements, equipment and local availability can change the final bill. TV Unleashed is an independent comparison guide and is not affiliated with the listed providers.</p>
+  </div>
+</section>
+
+<!-- DEVICES -->
+<section class="devices">
+  <div class="devices-inner">
+    <h2>WORKS ON EVERYTHING</h2>
+    <p>Use your own compatible streaming device. Equipment is sold separately.</p>
+    <div class="devices-row">
+      <div class="device-item"><div class="d-icon">📱</div><div class="d-label">iOS &amp; Android</div></div>
+      <div class="device-item"><div class="d-icon">💻</div><div class="d-label">Mac &amp; PC</div></div>
+      <div class="device-item"><div class="d-icon">📺</div><div class="d-label">Smart TV</div></div>
+      <div class="device-item"><div class="d-icon">🎮</div><div class="d-label">Fire Stick</div></div>
+      <div class="device-item"><div class="d-icon">🖥️</div><div class="d-label">Android Box</div></div>
+      <div class="device-item"><div class="d-icon">🎯</div><div class="d-label">MAG Device</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER FORM -->
+<section class="form-section" id="order">
+  <div class="form-box" id="form-wrap">
+    <h2>GET ACCESS NOW</h2>
+    <p class="form-sub">Fill out below. We'll have you streaming in minutes.</p>
+    <div class="form-fields">
+      <div>
+        <label class="field-label" for="f-name">Full Name</label>
+        <input class="inp" id="f-name" type="text" placeholder="Your name">
+      </div>
+      <div>
+        <label class="field-label" for="f-email">Email Address</label>
+        <input class="inp" id="f-email" type="email" placeholder="your@email.com">
+      </div>
+      <div>
+        <label class="field-label" for="f-phone">Phone / WhatsApp</label>
+        <input class="inp" id="f-phone" type="tel" placeholder="(617) 000-0000">
+      </div>
+      <div>
+        <label class="field-label" for="f-pkg">Select Package</label>
+        <select class="inp" id="f-pkg">
+          <option value="basic">BASIC &mdash; $100/year</option>
+          <option value="better" selected>BETTER &mdash; $150/year</option>
+          <option value="best">BEST &mdash; $200/year</option>
+        </select>
+      </div>
+      <div class="form-summary">
+        <div class="s-left">
+          <div class="s-lbl">Your Plan</div>
+          <div class="s-name" id="s-name">BETTER</div>
+          <div class="s-tag" id="s-tag">Live TV plus the movie library</div>
+        </div>
+        <div class="s-right" style="text-align:right">
+          <div class="s-price" id="s-price">$150</div>
+          <div class="s-mo">/year &middot; device not included</div>
+        </div>
+      </div>
+      <button class="btn-submit" onclick="submitForm()">🚀 Get Access Now</button>
+      <p class="form-fine">Annual service &middot; One compatible device per subscription &middot; Device sold separately</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div>
+      <div class="foot-logo"><span>TV</span> UNLEASHED</div>
+      <div class="foot-tagline">Your guide to better watching &middot; Boston, MA</div>
+    </div>
+    <div class="foot-links">
+      <a href="#" class="foot-link">Privacy</a>
+      <a href="#" class="foot-link">Terms</a>
+      <a href="#" class="foot-link">Contact</a>
+      <a href="#" class="foot-link">Support</a>
+    </div>
+    <div class="foot-copy">&copy; 2026 Seymore Green. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+const TMDB_KEY = "8265bd1679663a7ea12ac168da84d2e8";
+const IMG_BASE = "https://image.tmdb.org/t/p/w342";
+const UNS = "https://images.unsplash.com/photo-";
+
+// ─── DATA ────────────────────────────────────────────────────────────────────
+
+const CATS = [
+  {id:"movies", label:"Movies",       ac:"#00d4ff", cnt:"50,000+"},
+  {id:"series", label:"Series",       ac:"#4BBB2A", cnt:"10,000+"},
+  {id:"live",   label:"Live TV",      ac:"#ff6b35", cnt:"2,500+"},
+  {id:"ppv",    label:"Pay-Per-View", ac:"#c9a227", cnt:"Weekly"},
+  {id:"adult",  label:"Adult 🔞",      ac:"#ff3d71", cnt:"Exclusive"},
+];
+
+const PKGS = [
+  { id:"basic", name:"BASIC", price:"100", tag:"Live television all year", color:"#4BBB2A",
+    feats:["Live TV Channels","Premium Channels","Full-Year Access","TV Guide","1 Compatible Device","Customer Support"],
+    lock:["Movies & Series Library","Pay-Per-View Events","Adult Content","NFL & NBA Packages"], badge:null },
+  { id:"better", name:"BETTER", price:"150", tag:"Live TV plus the movie library", color:"#00d4ff",
+    feats:["Everything in Basic","Live TV Channels","Premium Channels","Movies Library","Series Library","Full-Year Access","1 Compatible Device"],
+    lock:["Pay-Per-View Events","Adult Content","NFL & NBA Packages"], badge:"POPULAR" },
+  { id:"best", name:"BEST", price:"200", tag:"Everything. Fully unleashed.", color:"#c9a227",
+    feats:["Everything in Basic & Better","Live TV & Premium Channels","Movies & Series","Pay-Per-View Events","Adult Content","NFL Package","NBA Package","Full-Year Access","1 Compatible Device"],
+    lock:[], badge:"ALL ACCESS" },
+];
+
+const PROVIDER_PRICES = {
+  xfinity: {
+    label:"Xfinity / Comcast",
+    plans:[
+      {name:"NOW TV",price:"$20",period:"/month",detail:"270+ live and On Demand channels, Peacock Premium with ads, 20 DVR hours and up to 3 simultaneous streams. Requires eligible Xfinity Internet.",url:"https://www.xfinity.com/nowtv"},
+      {name:"TV Core",price:"$65",period:"/month",detail:"National and local networks, first 4K TV box and Voice Remote, 150 DVR hours and Xfinity Stream access.",url:"https://www.xfinity.com/learn/digital-cable-tv/x1"},
+      {name:"Sports & News TV",price:"$90",period:"/month",detail:"50+ live channels, Peacock Premium, ESPN Unlimited, first 4K box and 300 DVR hours. Taxes and extra equipment may cost more.",url:"https://www.xfinity.com/learn/digital-cable-tv/sports-news"},
+      {name:"TV Plus",price:"$105",period:"/month",detail:"Popular entertainment, sports and news channels, first 4K box, 300 DVR hours and ESPN Unlimited.",url:"https://www.xfinity.com/learn/digital-cable-tv/sports"},
+      {name:"TV Premium",price:"$135",period:"/month",detail:"Largest listed Xfinity lineup with regional sports networks, first 4K box, 300 DVR hours and ESPN Unlimited.",url:"https://www.xfinity.com/learn/digital-cable-tv/sports/nfl"}
+    ]
+  },
+  directv: {
+    label:"DIRECTV",
+    plans:[
+      {name:"Entertainment",price:"$89.99",period:"/month regular",detail:"90+ channels, local channels where available, unlimited Cloud DVR and MyFree DIRECTV channels. Promotions and required fees may apply.",url:"https://www.directv.com/shop/build/configure?flowType=streaming&intent=device"},
+      {name:"Choice",price:"$94.99",period:"/month regular",detail:"125+ channels, Entertainment features, regional sports networks and specialty sports channels. Regional sports fees may apply.",url:"https://www.directv.com/shop/build/configure?flowType=streaming&intent=device"},
+      {name:"Ultimate",price:"$124.99",period:"/month regular",detail:"160+ channels with additional sports and movie networks including NHL Network and STARZ Encore.",url:"https://www.directv.com/shop/build/configure?flowType=streaming&intent=device"},
+      {name:"Premier",price:"$169.99",period:"/month regular",detail:"185+ channels and major premium networks. Taxes, fees and promotional pricing vary.",url:"https://www.directv.com/shop/build/configure?flowType=streaming&intent=device"},
+      {name:"MySports",price:"$64.99",period:"/month",detail:"DIRECTV sports-focused Genre Pack. DIRECTV Sports Pack is also listed separately at $14.99/month.",url:"https://www.directv.com/legalMA/"}
+    ]
+  },
+  max: {
+    label:"HBO Max",
+    plans:[
+      {name:"Basic with Ads",price:"$9.99",period:"/month · $99.99/year",detail:"Two devices at once with Full HD 1080p streaming and advertising.",url:"https://help.max.com/US/Answer/Detail/000002547"},
+      {name:"Standard",price:"$16.99",period:"/month · $169.99/year",detail:"Two devices, Full HD 1080p, 30 downloads and included live sports where available.",url:"https://help.max.com/US/Answer/Detail/000002547"},
+      {name:"Premium",price:"$20.99",period:"/month · $209.99/year",detail:"Four devices, available 4K UHD and Dolby Atmos, 100 downloads and included live sports.",url:"https://help.max.com/US/Answer/Detail/000002547"},
+      {name:"DIRECTV HBO Max Add-on",price:"$18.49",period:"/month",detail:"HBO Max billed as a DIRECTV premium add-on. The included Max tier depends on provider terms.",url:"https://www.directv.com/legalMA/"}
+    ]
+  },
+  nfl: {
+    label:"NFL Packages",
+    plans:[
+      {name:"NFL+",price:"$6.99",period:"/month · $49.99/year",detail:"Live local and primetime games on phone or tablet, NFL Network, game audio and on-demand programming. Taxes may apply.",url:"https://support.nfl.com/hc/en-us/articles/35869739723028-How-much-does-NFL-cost"},
+      {name:"NFL+ Premium",price:"$14.99",period:"/month · $99.99/season",detail:"Everything in NFL+, plus NFL RedZone, NFL Pro and full, condensed and All-22 game replays.",url:"https://support.nfl.com/hc/en-us/articles/35869739723028-How-much-does-NFL-cost"},
+      {name:"Sunday Ticket + YouTube TV",price:"$378",period:"2026 season · returning",detail:"Out-of-market Sunday afternoon games. Requires YouTube TV at $82.99/month. New-subscriber offer was listed at $192; RedZone adds $42.",url:"https://support.google.com/youtubetv/thread/407702230/nfl-sunday-ticket-for-the-%E2%80%9826-nfl-season-is-now-available-for-purchase?hl=en"},
+      {name:"Sunday Ticket Standalone",price:"$480",period:"2026 season · returning",detail:"Watch out-of-market Sunday afternoon games on YouTube without YouTube TV. New-subscriber offer was listed at $240; RedZone adds $42.",url:"https://support.google.com/youtubetv/thread/407702230/nfl-sunday-ticket-for-the-%E2%80%9826-nfl-season-is-now-available-for-purchase?hl=en"},
+      {name:"Xfinity Sunday Ticket Offer",price:"$240",period:"2026 season offer",detail:"50% off the $480 standalone price for eligible new or returning Sunday Ticket subscribers with Xfinity Internet or TV. Listed through October 28, 2026.",url:"https://www.xfinity.com/learn/digital-cable-tv/sports-news"}
+    ]
+  }
+};
+
+const MOVIE_IDS = [
+  {id:926393, t:"The Equalizer 3",        g:"Action",    y:"2023", typ:"movie"},
+  {id:872585, t:"Oppenheimer",             g:"Drama",     y:"2023", typ:"movie"},
+  {id:385687, t:"Fast X",                  g:"Action",    y:"2023", typ:"movie"},
+  {id:603692, t:"John Wick 4",             g:"Thriller",  y:"2023", typ:"movie"},
+  {id:575264, t:"Mission: Impossible 7",   g:"Action",    y:"2023", typ:"movie"},
+  {id:76600,  t:"Avatar: Way of Water",    g:"Sci-Fi",    y:"2022", typ:"movie"},
+  {id:361743, t:"Top Gun: Maverick",       g:"Action",    y:"2022", typ:"movie"},
+  {id:505642, t:"Black Panther 2",         g:"Action",    y:"2022", typ:"movie"},
+  {id:667538, t:"Transformers: Rise",      g:"Action",    y:"2023", typ:"movie"},
+  {id:298618, t:"The Flash",               g:"Action",    y:"2023", typ:"movie"},
+  {id:569094, t:"Spider-Man: Spider-Verse",g:"Animation", y:"2023", typ:"movie"},
+  {id:346698, t:"Barbie",                  g:"Comedy",    y:"2023", typ:"movie"},
+];
+
+const SERIES_IDS = [
+  {id:1396,  t:"Breaking Bad",    g:"Crime Drama", y:"5 Seasons", typ:"tv"},
+  {id:1438,  t:"The Wire",        g:"Crime",       y:"5 Seasons", typ:"tv"},
+  {id:76331, t:"Succession",      g:"Drama",       y:"4 Seasons", typ:"tv"},
+  {id:85552, t:"Euphoria",        g:"Drama",       y:"2 Seasons", typ:"tv"},
+  {id:69050, t:"Ozark",           g:"Crime",       y:"4 Seasons", typ:"tv"},
+  {id:54334, t:"Power",           g:"Crime",       y:"6 Seasons", typ:"tv"},
+  {id:76479, t:"The Boys",        g:"Action",      y:"4 Seasons", typ:"tv"},
+  {id:60574, t:"Peaky Blinders",  g:"Crime",       y:"6 Seasons", typ:"tv"},
+  {id:1399,  t:"Game of Thrones", g:"Fantasy",     y:"8 Seasons", typ:"tv"},
+  {id:87108, t:"Chernobyl",       g:"Drama",       y:"1 Season",  typ:"tv"},
+  {id:95396, t:"Severance",       g:"Thriller",    y:"2 Seasons", typ:"tv"},
+  {id:84958, t:"Loki",            g:"Sci-Fi",      y:"2 Seasons", typ:"tv"},
+];
+
+const LIVE_CH = [
+  {t:"ESPN",        g:"Sports",        y:"24/7 Live",      logo:"https://upload.wikimedia.org/wikipedia/commons/2/2f/ESPN_wordmark.svg",           bg:"#8b0000"},
+  {t:"Fox Sports",  g:"Sports",        y:"NFL · MLB · NBA",logo:"https://upload.wikimedia.org/wikipedia/commons/0/0c/Fox_Sports_logo.svg",          bg:"#001f5b"},
+  {t:"NBA TV",      g:"Basketball",    y:"Every Game",     logo:"https://upload.wikimedia.org/wikipedia/en/7/7a/NBA_TV_logo.svg",                   bg:"#003ba3"},
+  {t:"NFL Network", g:"Football",      y:"All Season",     logo:"https://upload.wikimedia.org/wikipedia/en/a/a2/NFL_Network_logo.svg",              bg:"#013369"},
+  {t:"CNN",         g:"News",          y:"Breaking News",  logo:"https://upload.wikimedia.org/wikipedia/commons/b/b1/CNN.svg",                      bg:"#8b0000"},
+  {t:"HBO",         g:"Premium",       y:"Originals",      logo:"https://upload.wikimedia.org/wikipedia/commons/d/de/HBO_logo.svg",                 bg:"#1a1a1a"},
+  {t:"Showtime",    g:"Premium",       y:"Movies & Series",logo:"https://upload.wikimedia.org/wikipedia/commons/2/22/Showtime.svg",                 bg:"#8b0000"},
+  {t:"BET",         g:"Entertainment", y:"Culture & Music",logo:"https://upload.wikimedia.org/wikipedia/commons/7/7e/BET_logo_2018.svg",            bg:"#111"},
+  {t:"TNT",         g:"Drama",         y:"Premium Cable",  logo:"https://upload.wikimedia.org/wikipedia/commons/5/5b/TNT_Logo_2016.svg",            bg:"#0a0a2e"},
+  {t:"FX",          g:"Drama",         y:"Original Series",logo:"https://upload.wikimedia.org/wikipedia/commons/9/90/FX_International_logo.svg",    bg:"#1a0000"},
+  {t:"AMC",         g:"Drama",         y:"Award Winners",  logo:"https://upload.wikimedia.org/wikipedia/commons/b/b8/AMC_logo_2019.svg",            bg:"#1a1a00"},
+  {t:"Discovery+",  g:"Docs",          y:"Nature & Science",logo:"https://upload.wikimedia.org/wikipedia/commons/8/88/Discovery_Plus_Logo.svg",    bg:"#001a1a"},
+];
+
+const PPV_EVENTS = [
+  {t:"UFC 300",              g:"MMA",       y:"Main Card",     bg1:"#0a0a0a",bg2:"#1a0000",ac:"#ff0000",icon:"🥊"},
+  {t:"Canelo vs GGG",        g:"Boxing",    y:"Championship",  bg1:"#1a0000",bg2:"#2a1000",ac:"#c9a227",icon:"🥊"},
+  {t:"WrestleMania 40",      g:"WWE",       y:"The Showcase",  bg1:"#0a001a",bg2:"#1a0030",ac:"#7b2fff",icon:"🤼"},
+  {t:"Mayweather Exhibition",g:"Boxing",    y:"Main Event",    bg1:"#001a00",bg2:"#002a10",ac:"#22c55e",icon:"🥊"},
+  {t:"UFC Fight Night",      g:"MMA",       y:"Full Card",     bg1:"#0a0a0a",bg2:"#1a0a0a",ac:"#ff0000",icon:"🥊"},
+  {t:"WWE Royal Rumble",     g:"WWE",       y:"30-Man Match",  bg1:"#001a1a",bg2:"#002a2a",ac:"#00c8ff",icon:"🤼"},
+  {t:"Fury vs Usyk",         g:"Boxing",    y:"Undisputed",    bg1:"#00001a",bg2:"#00102a",ac:"#60a5fa",icon:"🥊"},
+  {t:"World Title Fight",    g:"Boxing",    y:"Heavyweight",   bg1:"#1a1a00",bg2:"#2a2a00",ac:"#ff6b00",icon:"🏆"},
+  {t:"AEW Double or Nothing",g:"Wrestling", y:"PPV Event",     bg1:"#0a1a00",bg2:"#102a00",ac:"#84cc16",icon:"🤼"},
+  {t:"Bellator 300",         g:"MMA",       y:"Championship",  bg1:"#1a0a00",bg2:"#2a1500",ac:"#fb923c",icon:"🥊"},
+  {t:"WWE SmackDown",        g:"WWE",       y:"Friday Night",  bg1:"#1a000a",bg2:"#2a001a",ac:"#ff69b4",icon:"🤼"},
+  {t:"DAZN Boxing Night",    g:"Boxing",    y:"Main Event",    bg1:"#000a1a",bg2:"#00152a",ac:"#38bdf8",icon:"🥊"},
+];
+
+const ADULT_IDS = [
+  "1516589178581-6cd7833ae3b2","1529634806980-85c3dd6d34ac",
+  "1474552226712-ac0f0961a954","1501746877-14782df58970",
+  "1469371670807-013ccf25f16a","1518199266791-5375a83190b7",
+  "1544551763-46a013bb70d5","1542596768-5ddb8d839d0c",
+  "1506794778202-cad84cf45f1d","1531746790731-6c087fecd65a",
+  "1484791984435-5b3ebd8b6f9c","1534528741775-53994a69daeb",
+];
+const ADULT_LABELS = [
+  {t:"Temptation",      g:"Romance",     y:"HD"},  {t:"After Midnight",   g:"Adult Drama", y:"4K"},
+  {t:"Desire",          g:"Romance",     y:"HD"},  {t:"Forbidden Nights", g:"Adult",       y:"4K"},
+  {t:"Pure Passion",    g:"Romance",     y:"HD"},  {t:"Midnight Secrets", g:"Adult Drama", y:"4K"},
+  {t:"Red Light",       g:"Adult",       y:"HD"},  {t:"Unveiled",         g:"Romance",     y:"4K"},
+  {t:"The Arrangement", g:"Adult Drama", y:"HD"},  {t:"Confessions",      g:"Adult",       y:"4K"},
+  {t:"No Limits",       g:"Adult",       y:"HD"},  {t:"Private Lives",    g:"Romance",     y:"4K"},
+];
+
+// ─── STATE ───────────────────────────────────────────────────────────────────
+
+let activeCat   = "movies";
+let selectedPkg = "better";
+let activeProvider = "xfinity";
+let posters     = { movies:{}, series:{} };
+let fetchDone   = false;
+
+// ─── HELPERS ─────────────────────────────────────────────────────────────────
+
+function getBg(i){
+  const b=["#1a1a2e","#16213e","#0f2040","#18002e","#0d1b2a","#0d2137","#1b1b2f","#0a1929","#1a0000","#001a00","#1a1a00","#000a1a"];
+  const a=["#e94560","#00b4d8","#f97316","#7c3aed","#06b6d4","#22d3ee","#ef4444","#60a5fa","#dc2626","#22c55e","#eab308","#818cf8"];
+  return { bg:b[i%b.length], ac:a[i%a.length] };
+}
+
+function playIcon(){
+  return `<div class="play-ov"><div class="play-btn"><svg width=14 height=14 viewBox="0 0 24 24" fill="#fff"><polygon points="5,3 19,12 5,21"/></svg></div></div>`;
+}
+
+// ─── CARD BUILDERS ───────────────────────────────────────────────────────────
+
+function mediaCard(item, i, bucket){
+  const poster = posters[bucket][item.id];
+  const {bg, ac} = getBg(i);
+  const foot = `<div class="card-badge">${item.g}</div><div class="card-foot"><div class="card-sub" style="color:${ac}">${item.y}</div><div class="card-title">${item.t}</div></div>${playIcon()}`;
+  if(poster){
+    return `<div class="card" style="border:1px solid rgba(255,255,255,.07)">
+      <img class="poster" src="${IMG_BASE}${poster}" alt="${item.t}" onerror="this.style.display='none'">
+      ${foot}
+    </div>`;
+  }
+  return `<div class="card" style="background:${bg};border:1.5px solid ${ac}22">
+    <div style="position:absolute;inset:0;background:linear-gradient(145deg,${bg},${ac}25)"></div>
+    <div style="position:absolute;top:0;left:0;right:0;height:3px;background:${ac}"></div>
+    <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:36px;opacity:.12">🎬</div>
+    ${foot}
+  </div>`;
+}
+
+function liveCard(item){
+  return `<div class="card" style="background:${item.bg};border:1px solid rgba(255,255,255,.07)">
+    <img src="${item.logo}" alt="${item.t}" style="position:absolute;max-width:65%;max-height:38%;object-fit:contain;filter:brightness(0) invert(1);top:50%;left:50%;transform:translate(-50%,-60%)" onerror="this.style.display='none'">
+    <div class="card-badge">${item.g}</div>
+    <div class="card-foot"><div class="card-sub" style="color:rgba(255,255,255,.5)">${item.y}</div><div class="card-title">${item.t}</div></div>
+    ${playIcon()}
+  </div>`;
+}
+
+function ppvCard(item){
+  return `<div class="card" style="background:linear-gradient(135deg,${item.bg1},${item.bg2});border:1px solid ${item.ac}22">
+    <div style="position:absolute;top:0;left:0;right:0;height:3px;background:${item.ac}"></div>
+    <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px">
+      <div style="font-size:40px">${item.icon}</div>
+      <div style="font-size:10px;font-weight:700;color:${item.ac};text-transform:uppercase;letter-spacing:1.5px;text-align:center">${item.g}</div>
+    </div>
+    <div class="card-badge" style="background:${item.ac}22;color:${item.ac}">${item.y}</div>
+    <div class="card-foot"><div class="card-sub" style="color:${item.ac}">${item.g}</div><div class="card-title">${item.t}</div></div>
+    ${playIcon()}
+  </div>`;
+}
+
+function adultCard(id, label){
+  return `<div class="card" style="background:#0d000a;border:1px solid rgba(255,61,113,.12)">
+    <img src="${UNS}${id}?auto=format&fit=crop&w=300&h=450&q=75" alt="${label.t}"
+      style="width:100%;height:100%;object-fit:cover;filter:brightness(.72) saturate(.85)"
+      onerror="this.style.display='none'">
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(100,0,30,.65) 100%)"></div>
+    <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#ff3d71,#ff1744)"></div>
+    <div class="card-badge" style="background:rgba(255,61,113,.3);color:#ff6b9d">18+</div>
+    <div class="card-foot"><div class="card-sub" style="color:#ff3d71">${label.y} &middot; ${label.g}</div><div class="card-title">${label.t}</div></div>
+    <div class="play-ov"><div class="play-btn" style="background:rgba(255,61,113,.3)"><svg width=14 height=14 viewBox="0 0 24 24" fill="#fff"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+  </div>`;
+}
+
+// ─── RENDER ──────────────────────────────────────────────────────────────────
+
+function renderGrid(){
+  const loading = document.getElementById("loading");
+  const grid    = document.getElementById("grid");
+  const note    = document.getElementById("grid-note");
+  const cat     = CATS.find(c => c.id === activeCat);
+
+  loading.style.display = "none";
+  grid.style.display    = "grid";
+
+  let html = "";
+
+  if(activeCat === "movies"){
+    MOVIE_IDS.forEach((item,i) => html += mediaCard(item, i, "movies"));
+    note.textContent = `Showing 12 of ${cat.cnt} titles · Full library with any subscription`;
+  } else if(activeCat === "series"){
+    SERIES_IDS.forEach((item,i) => html += mediaCard(item, i, "series"));
+    note.textContent = `Showing 12 of ${cat.cnt} titles · Full library with any subscription`;
+  } else if(activeCat === "live"){
+    LIVE_CH.forEach(item => html += liveCard(item));
+    note.textContent = `Showing 12 of ${cat.cnt} channels · Live TV and premium channels are included in Basic, Better & Best`;
+  } else if(activeCat === "ppv"){
+    PPV_EVENTS.forEach(item => html += ppvCard(item));
+    note.textContent = "Weekly events · Available in the Best package";
+  } else if(activeCat === "adult"){
+    ADULT_IDS.forEach((id,i) => html += adultCard(id, ADULT_LABELS[i]));
+    note.textContent = "🔞 Adults only · Exclusive to the Best package";
+  }
+
+  grid.innerHTML = html;
+}
+
+function renderTabs(){
+  document.getElementById("tabs").innerHTML = CATS.map(c =>
+    `<button class="tab${activeCat === c.id ? " active" : ""}"
+      style="${activeCat === c.id ? `background:${c.ac};border-color:${c.ac}` : ""}"
+      onclick="switchTab('${c.id}')">
+      ${c.label}&nbsp;<span style="opacity:.6;font-size:10px">${c.cnt}</span>
+    </button>`
+  ).join("");
+}
+
+function switchTab(id){
+  activeCat = id;
+  renderTabs();
+  if((id === "movies" || id === "series") && !fetchDone){
+    document.getElementById("loading").style.display = "block";
+    document.getElementById("grid").style.display    = "none";
+  } else {
+    renderGrid();
+  }
+}
+
+function renderPackages(){
+  document.getElementById("pkg-grid").innerHTML = PKGS.map(p => {
+    const active = selectedPkg === p.id;
+    const [r,g,b] = [parseInt(p.color.slice(1,3),16), parseInt(p.color.slice(3,5),16), parseInt(p.color.slice(5,7),16)];
+    return `<div class="pkg-card"
+      style="background:${active ? `rgba(${r},${g},${b},.08)` : "rgba(255,255,255,.025)"};
+             border:${active ? `2px solid ${p.color}` : "1px solid rgba(255,255,255,.07)"}"
+      onclick="selectPkg('${p.id}')">
+      ${p.badge ? `<div class="pkg-badge" style="background:${p.color}">${p.badge}</div>` : ""}
+      <div class="pkg-name" style="color:${p.color}">${p.name}</div>
+      <div class="pkg-tag">${p.tag}</div>
+      <div class="pkg-price">
+        <span class="dollars">$${p.price}</span>
+        <span class="cents">/year</span>
+      </div>
+      <div class="pkg-feats">
+        ${p.feats.map(f => `
+          <div class="pkg-row">
+            <svg width=13 height=13 viewBox="0 0 24 24" fill="none" stroke="${p.color}" stroke-width="3"><polyline points="20,6 9,17 4,12"/></svg>
+            <span>${f}</span>
+          </div>`).join("")}
+        ${p.lock.map(f => `
+          <div class="pkg-row locked">
+            <svg width=13 height=13 viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            <span>${f}</span>
+          </div>`).join("")}
+      </div>
+      <button class="pkg-btn"
+        style="background:${active ? p.color : "transparent"};
+               color:${active ? "#000" : "rgba(255,255,255,.5)"};
+               border:${active ? "none" : "1px solid rgba(255,255,255,.18)"}"
+        onclick="selectPkg('${p.id}');event.stopPropagation()">
+        ${active ? "✓ Selected" : "Choose Plan"}
+      </button>
+    </div>`;
+  }).join("");
+}
+
+function renderProviderPrices(){
+  const tabs = document.getElementById("provider-tabs");
+  const cards = document.getElementById("price-cards");
+  tabs.innerHTML = Object.entries(PROVIDER_PRICES).map(([id,provider]) =>
+    `<button class="provider-tab${activeProvider === id ? " active" : ""}" onclick="setProvider('${id}')">${provider.label}</button>`
+  ).join("");
+  const provider = PROVIDER_PRICES[activeProvider];
+  cards.innerHTML = provider.plans.map(plan => `
+    <article class="price-card">
+      <div class="price-provider">${provider.label}</div>
+      <div class="price-name">${plan.name}</div>
+      <div class="price-amount">${plan.price} <span class="price-period">${plan.period}</span></div>
+      <div class="price-detail">${plan.detail}</div>
+      <a class="official-link" href="${plan.url}" target="_blank" rel="noopener noreferrer">Check official price ↗</a>
+    </article>`).join("");
+}
+
+function setProvider(id){
+  if(!PROVIDER_PRICES[id]) return;
+  activeProvider = id;
+  renderProviderPrices();
+}
+
+function selectPkg(id){
+  selectedPkg = id;
+  const p = PKGS.find(x => x.id === id);
+  if(!p) return;
+  document.getElementById("f-pkg").value      = id;
+  document.getElementById("s-name").textContent = p.name;
+  document.getElementById("s-tag").textContent  = p.tag;
+  document.getElementById("s-price").textContent = "$" + p.price;
+  renderPackages();
+}
+
+document.getElementById("f-pkg").addEventListener("change", function(){ selectPkg(this.value); });
+
+function submitForm(){
+  const name  = document.getElementById("f-name").value.trim();
+  const email = document.getElementById("f-email").value.trim();
+  if(!name || !email){ alert("Please fill in your name and email."); return; }
+  document.getElementById("form-wrap").innerHTML = `
+    <div class="success-box">
+      <div class="s-check">✅</div>
+      <h2>YOU'RE IN!</h2>
+      <p>Order received for <strong>${name}</strong>.<br>
+      Check <strong>${email}</strong> — setup instructions on the way.</p>
+      <p class="s-note">Questions? Hit us on WhatsApp or Instagram.</p>
+    </div>`;
+}
+
+// ─── TMDB FETCH ──────────────────────────────────────────────────────────────
+
+async function fetchPosters(){
+  const all = [...MOVIE_IDS, ...SERIES_IDS];
+  const results = await Promise.allSettled(all.map(async item => {
+    try {
+      const r = await fetch(`https://api.themoviedb.org/3/${item.typ}/${item.id}?api_key=${TMDB_KEY}`);
+      const d = await r.json();
+      return { id:item.id, poster:d.poster_path, typ:item.typ };
+    } catch { return { id:item.id, poster:null, typ:item.typ }; }
+  }));
+
+  results.forEach(r => {
+    if(r.status === "fulfilled" && r.value && r.value.poster){
+      const bucket = r.value.typ === "movie" ? "movies" : "series";
+      posters[bucket][r.value.id] = r.value.poster;
+    }
+  });
+
+  fetchDone = true;
+  if(activeCat === "movies" || activeCat === "series") renderGrid();
+}
+
+// ─── INIT ────────────────────────────────────────────────────────────────────
+
+renderTabs();
+renderGrid();
+renderPackages();
+renderProviderPrices();
+fetchPosters();
+
+if("serviceWorker" in navigator){
+  window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
+}
+</script>
+</body>
+</html>
