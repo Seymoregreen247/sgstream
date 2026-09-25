@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TV Unleashed — Cut the Cable. We Set It Up.</title>
+<meta name="description" content="TV Unleashed by Seymore Green: streaming device setup and support plans in Roslindale, Boston. No cable, no contracts.">
+<meta name="theme-color" content="#05070d">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600&family=Permanent+Marker&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#05070d; --panel:#0b0f1a; --line:rgba(255,255,255,.1);
+  --text:#fff; --dim:rgba(255,255,255,.7); --faint:rgba(255,255,255,.45);
+  --blue:#1e9bff; --blue2:#39c6ff; --green:#35e05a; --red:#ff3131; --yellow:#ffe01b;
+  --purple:#7b2cff; --gold:#ffb81c;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;overflow-x:hidden;line-height:1.4}
+a{color:inherit}
+.bc{font-family:'Barlow Condensed',sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+
+/* ---------- LOGO ---------- */
+.logo{display:inline-flex;align-items:flex-end;gap:.18em;text-decoration:none;line-height:.8;white-space:nowrap}
+.logo .tv{font-family:'Bebas Neue',sans-serif;font-style:italic;letter-spacing:-.02em;
+  background:linear-gradient(180deg,#fff 0%,#e6e9ef 45%,#8d95a3 55%,#f4f6f9 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 2px 0 #222) drop-shadow(0 0 12px rgba(255,255,255,.15))}
+.logo .un{font-family:'Permanent Marker',cursive;transform:skew(-8deg) rotate(-4deg);
+  background:linear-gradient(180deg,#8fe3ff 0%,var(--blue2) 35%,var(--blue) 70%,#0a5fd6 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 0 14px rgba(30,155,255,.55));padding-right:.15em}
+
+/* ---------- NAV ---------- */
+nav{position:sticky;top:0;z-index:50;background:rgba(5,7,13,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:64px}
+nav .logo .tv{font-size:34px}
+nav .logo .un{font-size:24px}
+.nav-links{display:flex;gap:22px;align-items:center}
+.nav-links a{font:600 15px 'Barlow Condensed';letter-spacing:.06em;text-transform:uppercase;color:var(--dim);text-decoration:none}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:var(--red);color:#fff!important;padding:9px 16px;border-radius:8px;box-shadow:0 0 18px rgba(255,49,49,.45)}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;padding:44px 0 30px;overflow:hidden;
+  background:
+    radial-gradient(ellipse 60% 55% at 85% 35%,rgba(255,170,60,.16),transparent 60%),
+    radial-gradient(ellipse 70% 60% at 10% 0%,rgba(30,155,255,.18),transparent 60%),
+    linear-gradient(180deg,#0a0d18,#05070d)}
+.hero-top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
+.hero .logo .tv{font-size:clamp(80px,14vw,170px)}
+.hero .logo .un{font-size:clamp(46px,8vw,104px)}
+.swoosh{height:6px;width:min(560px,70%);margin:6px 0 0 18%;border-radius:50%;background:linear-gradient(90deg,transparent,var(--blue2),transparent);box-shadow:0 0 20px var(--blue)}
+.tag-yellow{background:var(--yellow);color:#000;font:800 clamp(18px,2.4vw,28px)/1 'Barlow Condensed';text-transform:uppercase;text-align:center;
+  padding:14px 18px;transform:rotate(-6deg);box-shadow:0 8px 24px rgba(0,0,0,.5);flex-shrink:0;margin-top:14px;
+  clip-path:polygon(2% 4%,98% 0,100% 94%,0 100%)}
+.tagline{font:800 clamp(26px,4vw,46px)/1 'Barlow Condensed';letter-spacing:.08em;text-transform:uppercase;margin:22px 0 18px}
+.hero-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:24px;align-items:center}
+.checks{list-style:none;display:flex;flex-direction:column;gap:14px}
+.checks li{display:flex;gap:14px;align-items:center;font:600 clamp(18px,2vw,23px) 'Barlow Condensed'}
+.ck{width:34px;height:34px;border-radius:50%;background:var(--blue);flex-shrink:0;display:grid;place-items:center;box-shadow:0 0 14px rgba(30,155,255,.6)}
+.ck svg{width:18px;height:18px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.btn{border:none;cursor:pointer;font:800 18px 'Barlow Condensed';letter-spacing:.06em;text-transform:uppercase;padding:15px 26px;border-radius:10px;text-decoration:none;display:inline-block;transition:transform .15s,filter .15s}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.1)}
+.btn-red{background:var(--red);color:#fff;box-shadow:0 0 22px rgba(255,49,49,.5)}
+.btn-ghost{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.35)}
+
+/* TV mockup */
+.scene{position:relative;padding-bottom:40px}
+.tvset{background:#000;border:10px solid #111;border-radius:10px;box-shadow:0 0 0 1px #333,0 30px 60px rgba(0,0,0,.7),0 0 60px rgba(30,155,255,.15);transform:perspective(1200px) rotateY(-8deg)}
+.tv-nav{display:flex;justify-content:space-around;padding:10px 6px;font:700 clamp(10px,1.3vw,15px) 'Barlow Condensed';letter-spacing:.06em;color:#dfe6f3;background:linear-gradient(180deg,#0e1628,#070b14)}
+.tv-nav span:first-child{color:#fff;border-bottom:2px solid var(--blue2)}
+.tiles{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;padding:8px}
+.tile{aspect-ratio:3/4;border-radius:4px;position:relative;overflow:hidden}
+.tile::after{content:"";position:absolute;inset:auto 0 0 0;height:40%;background:linear-gradient(transparent,rgba(0,0,0,.6))}
+.tile i{position:absolute;inset:0;display:grid;place-items:center;font-style:normal;font-size:clamp(14px,2.2vw,26px);opacity:.9}
+.box{position:absolute;left:18%;bottom:0;width:58%;height:64px;border-radius:10px;
+  background:linear-gradient(180deg,#2a2d33,#0d0e11 60%);box-shadow:0 16px 30px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.15);
+  transform:perspective(500px) rotateX(28deg);display:grid;place-items:center}
+.box .logo .tv{font-size:26px}.box .logo .un{font-size:17px}
+.box::after{content:"";position:absolute;right:16px;top:50%;width:5px;height:5px;border-radius:50%;background:var(--blue2);box-shadow:0 0 8px var(--blue2)}
+.remote{position:absolute;right:3%;bottom:4px;width:52px;height:170px;border-radius:26px;background:linear-gradient(180deg,#2b2e35,#0b0c0f);box-shadow:0 14px 26px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.15);transform:rotate(10deg);display:flex;flex-direction:column;align-items:center;padding-top:14px;gap:8px}
+.remote .ring{width:34px;height:34px;border-radius:50%;border:3px solid #444;background:#15171b}
+.remote .pill{width:30px;height:9px;border-radius:5px;background:#e9e9e9}
+.remote .pill.r{background:#ff2a2a}
+
+/* ---------- PLANS ---------- */
+.plans{padding:40px 0 24px}
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.plan{position:relative;border-radius:14px;padding:22px 20px 20px;background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(0,0,0,.4));
+  border:3px solid var(--c);box-shadow:0 0 24px var(--glow),inset 0 0 30px var(--glow2);cursor:pointer;display:flex;flex-direction:column;transition:transform .2s}
+.plan:hover{transform:translateY(-4px)}
+.plan.sel{outline:3px solid #fff;outline-offset:4px}
+.plan.g{--c:var(--green);--glow:rgba(53,224,90,.4);--glow2:rgba(53,224,90,.08)}
+.plan.b{--c:var(--blue2);--glow:rgba(57,198,255,.4);--glow2:rgba(57,198,255,.08)}
+.plan.r{--c:var(--red);--glow:rgba(255,49,49,.5);--glow2:rgba(255,49,49,.1)}
+.ribbon{position:absolute;top:-18px;left:50%;transform:translateX(-50%) rotate(-2deg);background:var(--red);color:#fff;font:800 22px 'Barlow Condensed';letter-spacing:.05em;padding:4px 22px;white-space:nowrap;box-shadow:0 6px 16px rgba(0,0,0,.5)}
+.plan h3{font:400 clamp(44px,5vw,64px)/.95 'Bebas Neue';text-align:center;letter-spacing:.01em}
+.plan h3 b{font-size:1.2em}
+.plan .sub{font:700 clamp(17px,1.8vw,21px) 'Barlow Condensed';text-transform:uppercase;text-align:center;color:var(--c);border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:14px}
+.plan ul{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:10px}
+.plan li{display:flex;gap:10px;font:500 17px 'Barlow Condensed';color:#eef2f8}
+.plan li::before{content:"✓";color:var(--c);font-weight:800;font-size:18px;line-height:1}
+.price{font:400 clamp(72px,8vw,104px)/1 'Bebas Neue';text-align:center;margin-top:auto;
+  background:linear-gradient(180deg,#fff -20%,var(--c) 60%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 16px var(--glow))}
+.price-lbl{text-align:center;font:800 19px 'Barlow Condensed';letter-spacing:.14em;margin-bottom:14px}
+.addon{border:2px solid rgba(255,255,255,.3);border-radius:12px;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px;background:rgba(0,0,0,.35);cursor:pointer;user-select:none}
+.addon.on{border-color:var(--c);background:rgba(255,255,255,.06)}
+.addon .t1{font:700 17px 'Barlow Condensed';text-transform:uppercase}
+.addon .t2{font:400 38px/1 'Bebas Neue';color:var(--yellow)}
+.addon .t3{font:500 15px 'Barlow Condensed';color:var(--dim)}
+.tog{width:46px;height:26px;border-radius:13px;background:#333;position:relative;flex-shrink:0;transition:background .2s}
+.tog::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:left .2s}
+.addon.on .tog{background:var(--c)}
+.addon.on .tog::after{left:23px}
+.incl{background:var(--yellow);color:#000;font:400 clamp(30px,3.4vw,40px)/1 'Permanent Marker';text-align:center;padding:10px;transform:rotate(-3deg);margin:0 -6px;box-shadow:0 8px 18px rgba(0,0,0,.5)}
+.pick{margin-top:14px;width:100%;background:var(--c);color:#000;border:none;border-radius:10px;padding:13px;font:800 18px 'Barlow Condensed';letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.plan.r .pick{color:#fff}
+
+/* ---------- FEATURE ICONS ---------- */
+.feats{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;padding:34px 0 20px;text-align:center}
+.fi .circ{width:78px;height:78px;margin:0 auto 10px;border-radius:50%;border:3px solid var(--blue2);display:grid;place-items:center;background:radial-gradient(circle,#0e2342,#05070d);box-shadow:0 0 18px rgba(57,198,255,.5)}
+.fi .circ svg{width:36px;height:36px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.fi b{display:block;font:800 18px 'Barlow Condensed';text-transform:uppercase}
+.fi span{font:500 15px 'Barlow Condensed';color:var(--dim)}
+
+.perks{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:10px 0 30px}
+.perk{border:3px solid var(--c);border-radius:12px;padding:16px;display:flex;gap:14px;align-items:center;background:var(--bgc);box-shadow:0 0 18px var(--glow)}
+.perk.p{--c:#9b5cff;--bgc:linear-gradient(135deg,#2b0f5c,#150830);--glow:rgba(155,92,255,.35)}
+.perk.y{--c:var(--gold);--bgc:linear-gradient(135deg,#2a1f05,#120d02);--glow:rgba(255,184,28,.3)}
+.perk.gr{--c:var(--green);--bgc:linear-gradient(135deg,#062612,#03120a);--glow:rgba(53,224,90,.3)}
+.perk .ic{font-size:44px;flex-shrink:0;width:54px;text-align:center}
+.perk b{display:block;font:800 21px/1.05 'Barlow Condensed';text-transform:uppercase}
+.perk.y b{color:var(--gold)}
+.perk span{font:500 17px/1.2 'Barlow Condensed';color:#e8ecf3;display:block}
+
+/* ---------- WHAT'S ON IT ---------- */
+.section{padding:50px 0;border-top:1px solid var(--line)}
+.h2{font:400 clamp(40px,5vw,62px)/1 'Bebas Neue';letter-spacing:.02em;margin-bottom:8px}
+.h2 em{font-style:normal;color:var(--blue2)}
+.lead{color:var(--dim);font-size:17px;max-width:680px;margin-bottom:26px}
+.apps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.app{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px}
+.app .k{font:700 12px 'Barlow Condensed';letter-spacing:.14em;text-transform:uppercase;color:var(--c,var(--green));margin-bottom:6px}
+.app b{font:700 22px 'Barlow Condensed';display:block;margin-bottom:6px}
+.app p{color:var(--dim);font-size:14.5px}
+
+/* savings */
+.save{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:center;background:linear-gradient(135deg,#0c1426,#070a12);border:2px solid rgba(57,198,255,.35);border-radius:16px;padding:28px}
+.save label{font:700 16px 'Barlow Condensed';letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
+.save input[type=range]{width:100%;margin:14px 0 6px;accent-color:var(--blue2)}
+.bill{font:400 44px 'Bebas Neue'}
+.save-out{text-align:center}
+.save-out .big{font:400 clamp(60px,7vw,88px)/1 'Bebas Neue';color:var(--green);filter:drop-shadow(0 0 14px rgba(53,224,90,.4))}
+.save-out small{display:block;color:var(--faint);font-size:13px;margin-top:8px}
+
+/* ---------- ORDER ---------- */
+.order{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px}
+.field{margin-bottom:14px}
+.field label{display:block;font:700 13px 'Barlow Condensed';letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-bottom:6px}
+.inp{width:100%;padding:13px 14px;border-radius:9px;border:1px solid rgba(255,255,255,.16);background:#070a12;color:#fff;font:400 16px 'Barlow';outline:none}
+.inp:focus{border-color:var(--blue2)}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.seg button{padding:11px 6px;border-radius:9px;border:1px solid rgba(255,255,255,.18);background:transparent;color:var(--dim);font:700 15px 'Barlow Condensed';text-transform:uppercase;cursor:pointer}
+.seg button.on{background:var(--c,var(--blue2));border-color:transparent;color:#000}
+.seg.plans-seg button[data-p="3"].on{--c:var(--green)}
+.seg.plans-seg button[data-p="12"].on{--c:var(--red);color:#fff}
+.summary{border-radius:12px;padding:18px;background:rgba(255,255,255,.04);border:1px solid var(--line);margin:6px 0 16px}
+.row{display:flex;justify-content:space-between;padding:6px 0;font:500 17px 'Barlow Condensed';color:var(--dim)}
+.row.total{border-top:1px solid var(--line);margin-top:6px;padding-top:12px;color:#fff;font-size:20px}
+.row.total b{font:400 44px/1 'Bebas Neue';color:var(--yellow)}
+.chk{display:flex;gap:10px;align-items:center;font:500 16px 'Barlow Condensed';cursor:pointer;margin-bottom:14px}
+.chk input{width:18px;height:18px;accent-color:var(--blue2)}
+.pay{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0 14px}
+.pay a{text-align:center;padding:12px 6px;border-radius:9px;font:800 16px 'Barlow Condensed';text-decoration:none;letter-spacing:.04em}
+.zl{background:#6d1ed4;color:#fff}.st{background:#fff;color:#000}
+.pay a.on{outline:3px solid #fff;outline-offset:2px}
+.zinfo{display:none;background:rgba(109,30,212,.15);border:1px solid #8b4dff;border-radius:10px;padding:12px 14px;margin:-4px 0 14px;font:500 16px 'Barlow Condensed'}
+.zinfo.show{display:block}
+.zinfo b{color:#fff;user-select:all}.vm{background:#008cff;color:#fff}.ca{background:#00d64f;color:#000}
+.fine{font-size:12.5px;color:var(--faint);line-height:1.5}
+.steps{list-style:none;counter-reset:s;display:flex;flex-direction:column;gap:16px}
+.steps li{counter-increment:s;display:flex;gap:14px}
+.steps li::before{content:counter(s);flex-shrink:0;width:38px;height:38px;border-radius:50%;background:var(--blue);display:grid;place-items:center;font:400 22px 'Bebas Neue'}
+.steps b{font:700 19px 'Barlow Condensed';display:block}
+.steps span{color:var(--dim);font-size:15px}
+.contact{margin-top:22px;padding-top:18px;border-top:1px solid var(--line);font:600 18px 'Barlow Condensed'}
+.contact a{color:var(--blue2);text-decoration:none}
+.done{text-align:center;padding:30px 10px}
+.done h3{font:400 54px 'Bebas Neue';color:var(--green)}
+.done p{color:var(--dim);margin:8px 0}
+
+/* ---------- BANNER + FOOTER ---------- */
+.banner{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:30px 0 40px;flex-wrap:wrap}
+.brush{background:var(--red);color:#000;font:400 clamp(26px,4vw,50px)/1 'Permanent Marker';padding:16px 34px;transform:rotate(-2deg);
+  clip-path:polygon(0 12%,4% 0,97% 6%,100% 40%,98% 100%,3% 92%,1% 60%);box-shadow:0 0 30px rgba(255,49,49,.4)}
+.banner .logo .tv{font-size:clamp(56px,7vw,90px)}.banner .logo .un{font-size:clamp(32px,4.2vw,56px)}
+footer{border-top:1px solid var(--line);padding:26px 0 34px;color:var(--faint);font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.disclaim{max-width:760px;line-height:1.55}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:960px){
+  .hero-grid,.order,.save{grid-template-columns:1fr}
+  .plans-grid{grid-template-columns:1fr;gap:34px;max-width:520px;margin:0 auto}
+  .feats{grid-template-columns:repeat(3,1fr);row-gap:22px}
+  .perks{grid-template-columns:1fr}
+  .apps{grid-template-columns:repeat(2,1fr)}
+  .nav-links a:not(.nav-cta){display:none}
+}
+@media(max-width:560px){
+  .pay{grid-template-columns:1fr 1fr}
+  .hero-top{flex-direction:column}
+  .tag-yellow{align-self:flex-end;margin-top:-6px}
+  .apps{grid-template-columns:1fr}
+  .feats{grid-template-columns:repeat(2,1fr)}
+  .tiles{grid-template-columns:repeat(4,1fr)}
+  .tiles .tile:nth-child(n+9){display:none}
+  .remote{width:40px;height:130px}
+  .brush{width:100%;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-in">
+    <a href="#top" class="logo"><span class="tv">TV</span><span class="un">UNLEASHED</span></a>
+    <div class="nav-links">
+      <a href="#plans">Plans</a>
+      <a href="#savings">Savings</a>
+      <a href="#order" class="nav-cta">Get Set Up</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-top">
+      <div>
+        <a class="logo" href="#top" aria-label="TV Unleashed"><span class="tv">TV</span><span class="un">UNLEASHED</span></a>
+        <div class="swoosh"></div>
+      </div>
+      <div class="tag-yellow">One Device<br>Endless<br>Entertainment</div>
+    </div>
+    <h1 class="tagline">Cut the cable. Keep the entertainment.</h1>
+
+    <div class="hero-grid">
+      <div>
+        <ul class="checks">
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="4"><polyline points="20 6 9 17 4 12"/></svg></span>Live TV, Sports &amp; News</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="4"><polyline points="20 6 9 17 4 12"/></svg></span>Movies &amp; Shows On Demand</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="4"><polyline points="20 6 9 17 4 12"/></svg></span>Device Set Up &amp; Ready to Go</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="4"><polyline points="20 6 9 17 4 12"/></svg></span>Works on Any TV with HDMI</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="4"><polyline points="20 6 9 17 4 12"/></svg></span>Simple &amp; Easy — We Set It Up</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="4"><polyline points="20 6 9 17 4 12"/></svg></span>No Cable. No Contracts.</li>
+        </ul>
+        <div class="hero-btns">
+          <a href="#plans" class="btn btn-red">Pick Your Plan</a>
+          <a href="#savings" class="btn btn-ghost">See What You Save</a>
+        </div>
+      </div>
+
+      <div class="scene" aria-hidden="true">
+        <div class="tvset">
+          <div class="tv-nav"><span>LIVE TV</span><span>MOVIES</span><span>SHOWS</span><span>SPORTS</span><span>KIDS</span><span>INTERNATIONAL</span></div>
+          <div class="tiles" id="tiles"></div>
+        </div>
+        <div class="box"><span class="logo"><span class="tv">TV</span><span class="un">UNLEASHED</span></span></div>
+        <div class="remote"><div class="ring"></div><div class="pill r"></div><div class="pill"></div><div class="pill"></div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- PLANS -->
+<section class="plans" id="plans">
+  <div class="wrap">
+    <div class="plans-grid" id="plansGrid"></div>
+
+    <div class="feats">
+      <div class="fi"><div class="circ"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M8 3l4 3 4-3M8 21h8"/></svg></div><b>Live TV</b><span>Channels</span></div>
+      <div class="fi"><div class="circ"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="7.5" r="1.6"/><circle cx="12" cy="16.5" r="1.6"/><circle cx="7.5" cy="12" r="1.6"/><circle cx="16.5" cy="12" r="1.6"/></svg></div><b>Movies &amp; Shows</b><span>On Demand</span></div>
+      <div class="fi"><div class="circ"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7l4 3-1.5 5h-5L8 10z"/></svg></div><b>Sports</b><span>Never miss a game</span></div>
+      <div class="fi"><div class="circ"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M15 20c0-2.5 1-4.5 3-4.5s3 2 3 4.5"/></svg></div><b>Kids Content</b><span>Family friendly</span></div>
+      <div class="fi"><div class="circ"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 3 2.5 15 0 18M12 3c-2.5 3-2.5 15 0 18"/></svg></div><b>International</b><span>Channels</span></div>
+      <div class="fi"><div class="circ"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h8M8 17h5"/></svg></div><b>News</b><span>From around the world</span></div>
+    </div>
+
+    <div class="perks">
+      <div class="perk p"><div class="ic">🚫</div><div><b>No Cable Bills<br>No Contracts<br>No Credit Checks</b></div></div>
+      <div class="perk y"><div class="ic">⚙️</div><div><b>Plug &amp; Play</b><span>We set it up for you<br>Just connect &amp; watch</span></div></div>
+      <div class="perk gr"><div class="ic">📶</div><div><b>Works On Any TV</b><span>with HDMI<br>Wi-Fi or Ethernet</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SAVINGS -->
+<section class="section" id="savings">
+  <div class="wrap">
+    <h2 class="h2">WHAT'S CABLE <em>COSTING YOU?</em></h2>
+    <p class="lead">Slide to your current monthly cable bill. See what a year looks like after you cut it and go with our 12-month plan.</p>
+    <div class="save">
+      <div>
+        <label for="billRange">Your monthly cable bill</label>
+        <input id="billRange" type="range" min="60" max="300" step="5" value="150">
+        <div class="bill" id="billOut">$150/mo</div>
+        <p class="fine">That's <strong id="yearOut" style="color:#fff">$1,800</strong> a year on cable.</p>
+      </div>
+      <div class="save-out">
+        <div class="fine" style="font:700 16px 'Barlow Condensed';letter-spacing:.1em;text-transform:uppercase">Potential first-year savings</div>
+        <div class="big" id="saveOut">$1,600</div>
+        <small>Compared to our 12-month plan ($200, device included). Any streaming subscriptions you choose to add are billed separately and lower the savings.</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER -->
+<section class="section" id="order">
+  <div class="wrap">
+    <h2 class="h2">GET <em>SET UP</em> NOW</h2>
+    <p class="lead">Pick your plan, choose how you want it set up, and pay the way you like. We'll reach out to lock in your setup time.</p>
+    <div class="order">
+      <div class="card" id="formCard">
+        <div class="field">
+          <label>Plan</label>
+          <div class="seg plans-seg" id="planSeg">
+            <button data-p="3">3 Months</button><button data-p="6">6 Months</button><button data-p="12">12 Months</button>
+          </div>
+        </div>
+        <label class="chk" id="devRow"><input type="checkbox" id="devChk"> Add a streaming device (+$65)</label>
+        <div class="field">
+          <label>Setup</label>
+          <div class="seg" id="setupSeg" style="grid-template-columns:1fr 1fr">
+            <button data-s="In-Store">In-Store</button><button data-s="Remote">Remote</button>
+          </div>
+        </div>
+        <div class="summary">
+          <div class="row"><span id="sumPlan">6-Month Plan</span><span id="sumPlanP">$125</span></div>
+          <div class="row" id="sumDevRow"><span>Streaming Device</span><span id="sumDev">—</span></div>
+          <div class="row total"><span>Total</span><b id="sumTotal">$125</b></div>
+        </div>
+        <div class="field"><label for="fName">Full Name</label><input class="inp" id="fName" placeholder="Your name"></div>
+        <div class="field"><label for="fPhone">Phone</label><input class="inp" id="fPhone" type="tel" placeholder="(617) 000-0000"></div>
+        <div class="field"><label for="fEmail">Email</label><input class="inp" id="fEmail" type="email" placeholder="you@email.com"></div>
+        <div class="field"><label for="fNote">Questions or notes (optional)</label><input class="inp" id="fNote" placeholder="Anything we should know?"></div>
+        <label style="font:700 13px 'Barlow Condensed';letter-spacing:.12em;text-transform:uppercase;color:var(--faint)">Pay with</label>
+        <div class="pay">
+          <a class="vm" id="payVM" data-m="Venmo" href="#" target="_blank" rel="noopener">Venmo</a>
+          <a class="ca" id="payCA" data-m="Cash App" href="#" target="_blank" rel="noopener">Cash App</a>
+          <a class="zl" id="payZL" data-m="Zelle" href="#">Zelle</a>
+          <a class="st" id="payST" data-m="In Store" href="#">Pay In Store</a>
+        </div>
+        <div class="zinfo" id="zInfo">Send <b id="zAmt">$125</b> with Zelle to <b id="zTo"></b><br><span style="color:var(--dim)">Put your name in the memo so we can match it to your order.</span></div>
+        <div class="zinfo" id="sInfo" style="border-color:rgba(255,255,255,.4);background:rgba(255,255,255,.06)">Pay cash or card when you come in to 35 Poplar St for setup.</div>
+        <button class="btn btn-red" style="width:100%" onclick="submitOrder()">Send My Order</button>
+        <p class="fine" style="margin-top:12px">Pick how you want to pay above. Venmo and Cash App open with your total filled in. Your order goes straight to our team.</p>
+      </div>
+
+      <div class="card">
+        <h3 class="h2" style="font-size:40px">HOW IT WORKS</h3>
+        <ol class="steps" style="margin-top:14px">
+          <li><div><b>Pick your plan</b><span>3, 6 or 12 months of setup &amp; support. The 12-month plan includes the device.</span></div></li>
+          <li><div><b>We set it up</b><span>Stop by 35 Poplar St in Roslindale, or we walk you through it remotely.</span></div></li>
+          <li><div><b>Plug in &amp; watch</b><span>Your device is connected and ready. Download and sign in to the apps you like and start watching.</span></div></li>
+          <li><div><b>We've got you</b><span>Device acting up? Remote not pairing? Call or text us any time during your plan.</span></div></li>
+        </ol>
+        <div class="contact">
+          Questions? Call or text <a href="tel:18444739667">844-4-SEYMOR</a><br>
+          <a href="mailto:sales@seymoregreen.com">sales@seymoregreen.com</a><br>
+          <span style="color:var(--dim)">35 Poplar St, Roslindale, MA 02131</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap banner">
+  <div class="brush">ENTERTAINMENT YOUR WAY.</div>
+  <a class="logo" href="#top"><span class="tv">TV</span><span class="un">UNLEASHED</span></a>
+</div>
+
+<!-- Netlify Forms: lets Netlify detect the order form at deploy (no backend needed) -->
+<form name="tv-order" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input name="name"><input name="phone"><input name="email"><input name="plan"><input name="device">
+  <input name="setup"><input name="payment"><input name="notes"><input name="total"><input name="bot-field">
+</form>
+
+<footer>
+  <div class="wrap">
+    <p class="disclaim">TV Unleashed by Seymore Green provides streaming devices, setup and support. Channels and content come from the streaming apps customers choose, download and sign in to themselves. Any app subscriptions are billed separately by each service. TV Unleashed is not affiliated with any streaming service.</p>
+    <p>&copy; 2026 Seymore Green · Roslindale, Boston</p>
+  </div>
+</footer>
+
+<script>
+/* ===== CONFIG — swap in your real payment handles ===== */
+const CONFIG = {
+  venmo:    "YOURVENMO",                          // Venmo username, no @
+  cashtag:  "YOURCASHTAG",                        // Cash App $cashtag, no $
+  zelle:    "YOUR ZELLE EMAIL OR PHONE",          // what customers send Zelle to
+  orderEmail: "sales@seymoregreen.com",
+  devicePrice: 65
+};
+
+const PLANS = {
+  "3":  {key:"3",  cls:"g", months:"3",  sub:"Great Way to Start",        price:75,  device:false,
+         feats:["3 Months of Setup & Support","Device Set Up & Connected","Help When You Need It","No Long-Term Commitment"]},
+  "6":  {key:"6",  cls:"b", months:"6",  sub:"Best Value for Flexibility", price:125, device:false,
+         feats:["6 Months of Setup & Support","Device Set Up & Connected","Help When You Need It","Save More Than 3 Months"]},
+  "12": {key:"12", cls:"r", months:"12", sub:"Our Most Popular Package",   price:200, device:true,
+         feats:["1 Full Year of Setup & Support","Device Set Up & Connected","Help When You Need It","Biggest Savings","Device Included — No Extra Cost"]}
+};
+
+let state = { plan:"6", device:{ "3":false, "6":false }, setup:"In-Store", pay:"" };
+
+/* TV tiles (decorative, original art only) */
+(function(){
+  const pal = [["#b31217","#e52d27","🏈"],["#1d2b64","#f8cdda","🎬"],["#f953c6","#b91d73","🎭"],["#00c6ff","#0072ff","🧸"],["#f7971e","#ffd200","🌆"],["#11998e","#38ef7d","⚽"],
+               ["#434343","#000","📰"],["#8e2de2","#4a00e0","🎤"],["#ff512f","#dd2476","🏀"],["#1488cc","#2b32b2","🌍"],["#56ab2f","#a8e063","🦁"],["#e65c00","#f9d423","🍿"]];
+  document.getElementById("tiles").innerHTML = pal.map(p=>`<div class="tile" style="background:linear-gradient(145deg,${p[0]},${p[1]})"><i>${p[2]}</i></div>`).join("");
+})();
+
+function money(n){ return "$" + n.toLocaleString(); }
+
+function renderPlans(){
+  document.getElementById("plansGrid").innerHTML = Object.values(PLANS).map(p=>{
+    const on = !p.device && state.device[p.key];
+    const bottom = p.device
+      ? `<div class="incl">DEVICE INCLUDED!</div>`
+      : `<div class="addon ${on?"on":""}" onclick="toggleDevice('${p.key}',event)" role="switch" aria-checked="${on}">
+           <div><div class="t1">Need a device?</div><div class="t2">+$${CONFIG.devicePrice}</div><div class="t3">Add a Streaming Device</div></div>
+           <div class="tog"></div>
+         </div>`;
+    return `<div class="plan ${p.cls} ${state.plan===p.key?"sel":""}" onclick="choosePlan('${p.key}')">
+      ${p.device?'<div class="ribbon">BEST DEAL!</div>':''}
+      <h3><b>${p.months}</b> MONTHS</h3>
+      <div class="sub">${p.sub}</div>
+      <ul>${p.feats.map(f=>`<li>${f}</li>`).join("")}</ul>
+      <div class="price">$${p.price}</div>
+      <div class="price-lbl">${p.device?"SETUP + DEVICE":"SETUP & SUPPORT"}</div>
+      ${bottom}
+      <button class="pick" onclick="choosePlan('${p.key}',true);event.stopPropagation()">${state.plan===p.key?"✓ Selected — Checkout":"Choose "+p.months+" Months"}</button>
+    </div>`;
+  }).join("");
+}
+
+function toggleDevice(k,e){ e.stopPropagation(); state.device[k]=!state.device[k]; state.plan=k; renderAll(); }
+function choosePlan(k,go){ state.plan=k; renderAll(); if(go) document.getElementById("order").scrollIntoView({behavior:"smooth"}); }
+
+function total(){
+  const p = PLANS[state.plan];
+  const dev = !p.device && state.device[p.key] ? CONFIG.devicePrice : 0;
+  return {p, dev, sum:p.price+dev};
+}
+
+function renderOrder(){
+  const {p,dev,sum} = total();
+  document.querySelectorAll("#planSeg button").forEach(b=>b.classList.toggle("on",b.dataset.p===state.plan));
+  document.querySelectorAll("#setupSeg button").forEach(b=>b.classList.toggle("on",b.dataset.s===state.setup));
+  const devRow = document.getElementById("devRow"), chk = document.getElementById("devChk");
+  devRow.style.display = p.device ? "none" : "flex";
+  chk.checked = !!state.device[p.key];
+  document.getElementById("sumPlan").textContent = p.months + "-Month Plan";
+  document.getElementById("sumPlanP").textContent = money(p.price);
+  document.getElementById("sumDev").textContent = p.device ? "Included" : (dev ? money(dev) : "—");
+  document.getElementById("sumTotal").textContent = money(sum);
+  const note = encodeURIComponent(`TV Unleashed ${p.months}-Month Plan${dev?" + Device":""}`);
+  document.getElementById("zAmt").textContent = money(sum);
+  document.getElementById("zTo").textContent = CONFIG.zelle;
+  document.querySelectorAll(".pay a").forEach(a=>a.classList.toggle("on",a.dataset.m===state.pay));
+  document.getElementById("zInfo").classList.toggle("show",state.pay==="Zelle");
+  document.getElementById("sInfo").classList.toggle("show",state.pay==="In Store");
+  document.getElementById("payVM").href = `https://venmo.com/${CONFIG.venmo}?txn=pay&amount=${sum}&note=${note}`;
+  document.getElementById("payCA").href = `https://cash.app/$${CONFIG.cashtag}/${sum}`;
+}
+
+function renderAll(){ renderPlans(); renderOrder(); }
+
+document.getElementById("planSeg").addEventListener("click",e=>{ if(e.target.dataset.p){ state.plan=e.target.dataset.p; renderAll(); }});
+document.getElementById("setupSeg").addEventListener("click",e=>{ if(e.target.dataset.s){ state.setup=e.target.dataset.s; renderOrder(); }});
+document.querySelector(".pay").addEventListener("click",e=>{
+  const a=e.target.closest("a"); if(!a) return;
+  state.pay=a.dataset.m;
+  if(a.dataset.m==="Zelle"||a.dataset.m==="In Store") e.preventDefault();
+  renderOrder();
+});
+document.getElementById("devChk").addEventListener("change",e=>{ state.device[state.plan]=e.target.checked; renderAll(); });
+
+/* Savings slider */
+const range = document.getElementById("billRange");
+function renderSave(){
+  const m = +range.value, yr = m*12, s = Math.max(0, yr-200);
+  document.getElementById("billOut").textContent = `$${m}/mo`;
+  document.getElementById("yearOut").textContent = money(yr);
+  document.getElementById("saveOut").textContent = money(s);
+}
+range.addEventListener("input",renderSave);
+
+function submitOrder(){
+  const name=document.getElementById("fName").value.trim(),
+        phone=document.getElementById("fPhone").value.trim(),
+        email=document.getElementById("fEmail").value.trim(),
+        apps=document.getElementById("fNote").value.trim();
+  if(!name || (!phone && !email)){ alert("Please add your name and a phone number or email."); return; }
+  const {p,dev,sum} = total();
+  const fields = {
+    "form-name":"tv-order", name, phone, email,
+    plan: `${p.months} months — ${money(p.price)}`,
+    device: p.device ? "Included" : (dev ? `Added (+$${dev})` : "No"),
+    setup: state.setup, payment: state.pay||"Not chosen", notes: apps, total: money(sum)
+  };
+  const showDone = () => { document.getElementById("formCard").innerHTML = doneHTML(name,p,sum); };
+  fetch("/", { method:"POST", headers:{"Content-Type":"application/x-www-form-urlencoded"},
+               body:new URLSearchParams(fields).toString() })
+    .then(r => { if(!r.ok) throw 0; showDone(); })
+    .catch(() => {   // fallback if not hosted on Netlify: open an email instead
+      const body = Object.entries(fields).filter(([k])=>k!=="form-name").map(([k,v])=>`${k}: ${v||"-"}`).join("\n");
+      window.location.href = `mailto:${CONFIG.orderEmail}?subject=${encodeURIComponent("TV Unleashed Order — "+name)}&body=${encodeURIComponent(body)}`;
+      showDone();
+    });
+}
+
+function doneHTML(name,p,sum){
+  return `<div class="done"><h3>YOU'RE IN!</h3>
+    <p>Thanks, <strong>${name.replace(/</g,"&lt;")}</strong> — your ${p.months}-month order (${money(sum)}) is on its way to our team.</p>
+    <p>We'll call or text to lock in your ${state.setup.toLowerCase()} setup.</p>
+    <p class="fine">Questions? 844-4-SEYMOR</p></div>`;
+}
+
+renderAll(); renderSave();
+</script>
+</body>
+</html>
